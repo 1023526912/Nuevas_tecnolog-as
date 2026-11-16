@@ -1,0 +1,27 @@
+paso,columna,accion,filas_afectadas,justificacion
+3. Conversión,asistencia_pct,Quitar %,300,El símbolo expresa la unidad. Se conserva la escala de 0 a 100.
+3. Conversión,asistencia_pct,Reconocer guiones como faltantes,202,El guion representa un dato ausente y debe distinguirse de cero.
+3. Conversión,asistencia_pct,Convertir a número,9948,"El tipo numérico permite calcular promedios, cuartiles y rangos."
+3. Conversión,horas_trabajo_semana,Reconocer guiones como faltantes,2822,El guion representa un dato ausente y debe distinguirse de cero.
+3. Conversión,horas_trabajo_semana,Convertir a número,7328,"El tipo numérico permite calcular promedios, cuartiles y rangos."
+3. Conversión,distancia_km,Cambiar 999 por nulo,152,La guía identifica 999 como código de dato faltante.
+4. Categorías,programa,Unificar escrituras,260,"Se consolidan las variantes de espacios, mayúsculas, tildes o abreviaturas de una misma categoría."
+4. Categorías,jornada,Unificar escrituras,485,"Se consolidan las variantes de espacios, mayúsculas, tildes o abreviaturas de una misma categoría."
+4. Categorías,genero,Unificar escrituras,559,"Se consolidan las variantes de espacios, mayúsculas, tildes o abreviaturas de una misma categoría."
+4. Categorías,ciudad_procedencia,Unificar escrituras,542,"Se consolidan las variantes de espacios, mayúsculas, tildes o abreviaturas de una misma categoría."
+5. Fechas,fecha_matricula,Convertir fechas ISO,7098,"El formato explícito conserva el orden año, mes y día."
+5. Fechas,fecha_matricula,Convertir fechas DD/MM/AAAA,3052,"El formato explícito conserva el orden día, mes y año."
+6. Duplicados,Todas,Eliminar duplicados exactos,150,Se conserva la primera aparición de cada fila completa. El ID distingue a estudiantes con perfiles iguales.
+7. Faltantes,promedio_acumulado,Eliminar filas sin promedio,298,Imputar calificaciones alteraría la distribución y los promedios por jornada.
+7. Faltantes,ciudad_procedencia,Etiquetar como Sin dato,96,Se conserva al estudiante sin asignarle una categoría desconocida.
+7. Faltantes,tipo_colegio,Etiquetar como Sin dato,145,Se conserva al estudiante sin asignarle una categoría desconocida.
+7. Faltantes,asistencia_pct,Conservar nulos,197,Se conserva la fila y se excluye del cálculo por cuartiles al faltar la asistencia.
+7. Faltantes,distancia_km,Conservar nulos,334,No existe información suficiente para estimar la distancia individual.
+7. Faltantes,motivo_retiro,Conservar nulos,6562,El motivo solo aplica a desertores. Los motivos desconocidos también deben permanecer vacíos.
+8. Rangos,promedio_acumulado,Convertir de 0–100 a 0–5,15,La guía plantea una mezcla de escalas. Se interpreta el bloque 45–78 como notas sobre 100.
+8. Rangos,edad,Imputar mediana válida (22),12,La guía usa 15 a 60 años. La mediana se obtiene solo de edades dentro de ese rango.
+8. Rangos,horas_trabajo_semana,Asignar 0 a quienes no trabajan,2707,"Si no hay trabajo, las horas semanales de trabajo son cero."
+8. Rangos,horas_trabajo_semana,Marcar horas fuera de 0–100 como nulas,29,Se aplica el umbral del taller para excluir registros inválidos.
+8. Rangos,horas_trabajo_semana,Imputar mediana de quienes trabajan (24),29,Se estima solo con horas válidas de estudiantes que trabajan.
+9. Variables,desertor,Crear indicador booleano,9702,La media del indicador equivale a la proporción de desertores.
+9. Variables,cuartil_asistencia,Agrupar en cuartiles,9505,Los grupos comparan niveles de asistencia con tamaños parecidos y mantienen juntos los valores iguales.

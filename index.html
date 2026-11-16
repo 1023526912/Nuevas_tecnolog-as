@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retención estudiantil | Resultados del taller</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Retención estudiantil</h1>
+      <p>Análisis de deserción y calidad de datos en una base institucional sintética.</p>
+      <nav aria-label="Secciones del informe"><a href="#graficos">Gráficos</a><a href="#resultados">Las cinco preguntas</a><a href="#metodo">Calidad y limpieza</a><a href="#diccionario">Diccionario de datos</a><a href="#reflexiones">Reflexiones</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    <dl class="metrics" aria-label="Resumen de resultados"><div class="metric"><dt>Registros originales</dt><dd>10.150</dd></div><div class="metric"><dt>Estudiantes analizados</dt><dd>9.702</dd></div><div class="metric"><dt>Desertores</dt><dd>3.140</dd></div><div class="metric"><dt>Tasa de deserción</dt><dd>32,36 %</dd></div></dl>
+    <section id="graficos">
+      <h2>Gráficos del análisis</h2>
+      <div class="charts"><figure><h3>Nulos del CSV original</h3><a href="Data/processed/graficos/mapa_faltantes.png" aria-label="Ampliar gráfico de nulos del csv original"><img src="Data/processed/graficos/mapa_faltantes.png" alt="Mapa de nulos por columna del CSV original."></a><figcaption>Los huecos más visibles corresponden a motivo de retiro (6.877) y promedio (304). También aparecen distancia (199), tipo de colegio (152) y ciudad (103). Coincide con la auditoría de nulos reales. Los guiones y el valor 999 conservan color de celda con dato porque el gráfico usa el CSV original.</figcaption></figure><figure><h3>Promedio y edad</h3><a href="Data/processed/graficos/distribuciones_antes_despues.png" aria-label="Ampliar gráfico de promedio y edad"><img src="Data/processed/graficos/distribuciones_antes_despues.png" alt="Cuatro diagramas de caja comparan promedio y edad antes y después de limpiar."></a><figcaption>El máximo de nota baja de 78 a 5,00 y su desviación estándar de 2,72 a 0,64. La edad pasa de un rango de 12–150 a 17–29. Las medianas siguen en 3,68 y 22 años, respectivamente. Cada variable conserva 31 puntos fuera de los bigotes según la regla de 1,5 veces el rango intercuartílico. Se conservan porque sus valores cumplen los rangos del taller.</figcaption></figure><figure><h3>Deserción por programa</h3><a href="Data/processed/graficos/tasa_desercion_por_programa.png" aria-label="Ampliar gráfico de deserción por programa"><img src="Data/processed/graficos/tasa_desercion_por_programa.png" alt="Barras horizontales ordenadas por tasa de deserción de los ocho programas."></a><figcaption>Ingeniería Industrial tiene la tasa más alta (40,27 %). Diseño Gráfico tiene el grupo más pequeño (850), todavía con cientos de observaciones. Las tasas describen esta muestra y no aíslan diferencias de composición entre carreras.</figcaption></figure><figure><h3>Deserción por asistencia</h3><a href="Data/processed/graficos/tasa_desercion_por_asistencia.png" aria-label="Ampliar gráfico de deserción por asistencia"><img src="Data/processed/graficos/tasa_desercion_por_asistencia.png" alt="Barras de tasa de deserción de Q1, asistencia más baja, a Q4, asistencia más alta."></a><figcaption>La tasa baja en los cuatro grupos sucesivos, de 61,86 % en Q1 a 9,44 % en Q4.</figcaption></figure></div>
+    </section>
+    <section id="resultados"><h2>Las cinco preguntas</h2><div class="panel"><h3>1. ¿Qué programa tiene la mayor tasa de deserción?</h3>
+<p>Ingeniería Industrial, con <strong>513 de 1.274 estudiantes (40,27 %)</strong>.</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Programa</th>
+<th style="text-align: right;">Estudiantes</th>
+<th style="text-align: right;">Desertores</th>
+<th style="text-align: right;">Tasa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ingeniería Industrial</td>
+<td style="text-align: right;">1.274</td>
+<td style="text-align: right;">513</td>
+<td style="text-align: right;">40,27 %</td>
+</tr>
+<tr>
+<td>Ingeniería de Sistemas</td>
+<td style="text-align: right;">1.388</td>
+<td style="text-align: right;">530</td>
+<td style="text-align: right;">38,18 %</td>
+</tr>
+<tr>
+<td>Diseño Gráfico</td>
+<td style="text-align: right;">850</td>
+<td style="text-align: right;">303</td>
+<td style="text-align: right;">35,65 %</td>
+</tr>
+<tr>
+<td>Enfermería</td>
+<td style="text-align: right;">1.134</td>
+<td style="text-align: right;">354</td>
+<td style="text-align: right;">31,22 %</td>
+</tr>
+<tr>
+<td>Derecho</td>
+<td style="text-align: right;">1.448</td>
+<td style="text-align: right;">442</td>
+<td style="text-align: right;">30,52 %</td>
+</tr>
+<tr>
+<td>Administración de Empresas</td>
+<td style="text-align: right;">1.307</td>
+<td style="text-align: right;">388</td>
+<td style="text-align: right;">29,69 %</td>
+</tr>
+<tr>
+<td>Contaduría Pública</td>
+<td style="text-align: right;">1.164</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">26,98 %</td>
+</tr>
+<tr>
+<td>Psicología</td>
+<td style="text-align: right;">1.137</td>
+<td style="text-align: right;">296</td>
+<td style="text-align: right;">26,03 %</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2. ¿Hay diferencia entre becados y no becados?</h3>
+<p>La deserción observada en el grupo becado es <strong>14,45 puntos porcentuales menor</strong>. El cálculo agrupa por beca y promedia el indicador booleano <code>desertor</code>. Los criterios de selección para recibir beca pueden estar relacionados con la permanencia, por lo que esta diferencia describe una asociación.</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Beca</th>
+<th style="text-align: right;">Estudiantes</th>
+<th style="text-align: right;">Desertores</th>
+<th style="text-align: right;">Tasa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sí</td>
+<td style="text-align: right;">2.691</td>
+<td style="text-align: right;">590</td>
+<td style="text-align: right;">21,92 %</td>
+</tr>
+<tr>
+<td>No</td>
+<td style="text-align: right;">7.011</td>
+<td style="text-align: right;">2.550</td>
+<td style="text-align: right;">36,37 %</td>
+</tr>
+</tbody>
+</table></div>
+<h3>3. ¿Qué jornada tiene el menor promedio acumulado?</h3>
+<p>La <strong>nocturna</strong>, con un promedio de <strong>3,465 sobre 5</strong> entre 2.672 estudiantes.</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Jornada</th>
+<th style="text-align: right;">Estudiantes</th>
+<th style="text-align: right;">Promedio acumulado medio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nocturna</td>
+<td style="text-align: right;">2.672</td>
+<td style="text-align: right;">3,465</td>
+</tr>
+<tr>
+<td>Fin de semana</td>
+<td style="text-align: right;">950</td>
+<td style="text-align: right;">3,704</td>
+</tr>
+<tr>
+<td>Diurna</td>
+<td style="text-align: right;">6.080</td>
+<td style="text-align: right;">3,724</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4. ¿Cuántas materias reprueban los desertores frente a los activos?</h3>
+<p>Los desertores registran <strong>3,068</strong> materias reprobadas en promedio y los activos <strong>0,622</strong>, una diferencia de <strong>2,446</strong>. Excluí a los 859 graduados porque corresponden a un tercer estado, fuera de los dos grupos definidos en la pregunta.</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Estado</th>
+<th style="text-align: right;">Estudiantes</th>
+<th style="text-align: right;">Media de materias reprobadas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activo</td>
+<td style="text-align: right;">5.703</td>
+<td style="text-align: right;">0,622</td>
+</tr>
+<tr>
+<td>Desertor</td>
+<td style="text-align: right;">3.140</td>
+<td style="text-align: right;">3,068</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5. ¿Aumenta la deserción conforme baja la asistencia?</h3>
+<p>Sí. En los <strong>9.505</strong> estudiantes con asistencia registrada, la tasa aumenta en cada paso de Q4 a Q1. Entre extremos hay <strong>52,42 puntos porcentuales</strong> de diferencia. Las dificultades económicas, los horarios de trabajo o problemas académicos pueden afectar tanto la asistencia como la permanencia. Además, una persona que ya está desvinculándose puede empezar a faltar antes de que se registre el retiro.</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Cuartil</th>
+<th>Rango de asistencia</th>
+<th style="text-align: right;">Estudiantes</th>
+<th style="text-align: right;">Desertores</th>
+<th style="text-align: right;">Asistencia media</th>
+<th style="text-align: right;">Tasa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1</td>
+<td>48,0–80,5 %</td>
+<td style="text-align: right;">2.386</td>
+<td style="text-align: right;">1.476</td>
+<td style="text-align: right;">73,907 %</td>
+<td style="text-align: right;">61,86 %</td>
+</tr>
+<tr>
+<td>Q2</td>
+<td>&gt;80,5–87,8 %</td>
+<td style="text-align: right;">2.390</td>
+<td style="text-align: right;">877</td>
+<td style="text-align: right;">84,403 %</td>
+<td style="text-align: right;">36,69 %</td>
+</tr>
+<tr>
+<td>Q3</td>
+<td>&gt;87,8–95,0 %</td>
+<td style="text-align: right;">2.355</td>
+<td style="text-align: right;">489</td>
+<td style="text-align: right;">91,334 %</td>
+<td style="text-align: right;">20,76 %</td>
+</tr>
+<tr>
+<td>Q4</td>
+<td>&gt;95,0–100,0 %</td>
+<td style="text-align: right;">2.374</td>
+<td style="text-align: right;">224</td>
+<td style="text-align: right;">98,659 %</td>
+<td style="text-align: right;">9,44 %</td>
+</tr>
+</tbody>
+</table></div></div></section>
+<section id="metodo"><h2>Calidad y limpieza</h2><div class="panel"><h3>Diagnóstico</h3><p>La lectura arrojó <strong>10.150 filas y 23 columnas</strong>. Las 23 columnas coinciden con el diccionario de la guía. Las 150 filas repetidas explican por qué hay 10.150 registros y 10.000 identificadores distintos.</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Resultado sobre el CSV original</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nulos reales</td>
+<td>Promedio: 304. Distancia: 199. Ciudad: 103. Tipo de colegio: 152. Motivo de retiro: 6.877. Las otras 18 columnas tienen cero.</td>
+</tr>
+<tr>
+<td>Nulos esperados</td>
+<td>Los 6.877 motivos vacíos corresponden a 5.977 activos y 900 graduados. Los 3.273 registros de desertores traen motivo.</td>
+</tr>
+<tr>
+<td>Faltantes disfrazados</td>
+<td>202 guiones en asistencia, 2.822 en horas de trabajo y 152 distancias con valor 999.</td>
+</tr>
+<tr>
+<td>Formatos mixtos</td>
+<td>300 asistencias con %. Asistencia y horas se leyeron como texto. Hubo 7.098 fechas AAAA-MM-DD y 3.052 DD/MM/AAAA.</td>
+</tr>
+<tr>
+<td>Duplicados</td>
+<td>150 filas exactas repetidas. Dos estudiantes con los mismos atributos conservarían filas distintas gracias a su identificador.</td>
+</tr>
+<tr>
+<td>Rangos imposibles</td>
+<td>17 notas mayores que 5 (de 45 a 78), 12 edades fuera de 15–60 (rango original 12–150) y 30 jornadas laborales de 200 horas semanales.</td>
+</tr>
+<tr>
+<td>Variantes tipográficas</td>
+<td>Programa: <code>Ingenieria de Sistemas</code> y <code>Psicologia</code>. Jornada: <code>diurna</code>, <code>nocturna</code> y <code>NOCTURNA</code>. Género: <code>F</code>, <code>M</code> y <code>femenino</code>. Ciudad: <code>BOGOTÁ</code>, <code>Bogota</code>, <code>bogota</code>, <code>medellin</code> y <code>Medellin</code>. Estado ya tenía tres etiquetas uniformes.</td>
+</tr>
+</tbody>
+</table></div>
+<p>La mezcla de escalas afecta especialmente el análisis del rendimiento. La nota máxima original era 78 y la desviación estándar era 2,72. Los guiones de asistencia también importan porque impiden calcular cuartiles mientras la columna se trate como texto.</p><h3>Decisiones</h3><ol>
+<li>Quité el signo % de 300 asistencias y conservé la escala 0–100. Convertí los guiones de asistencia y horas a nulos antes de convertir ambas columnas a números. Marqué 152 distancias con 999 como faltantes.</li>
+<li>Estandaricé categorías por espacios, mayúsculas, tildes y abreviaturas equivalentes. Cambiaron 260 registros de programa, 485 de jornada, 559 de género y 542 de ciudad. Conservé <code>Otra ciudad</code> como una categoría válida y usé <code>Sin dato</code> exclusivamente para la ciudad desconocida.</li>
+<li>Interpreté las fechas con sus dos formatos explícitos, sin perder ninguna. Eliminé 150 duplicados exactos y reinicié el índice.</li>
+<li>Eliminé 298 filas sin nota después de quitar duplicados para evitar asignar calificaciones inventadas. Si la falta de nota está relacionada con el estado, excluir estas filas puede afectar las tasas calculadas. Conservé 96 ciudades y 145 tipos de colegio faltantes con la etiqueta <code>Sin dato</code>. Dejé vacías 334 distancias desconocidas y los 6.562 motivos de retiro que no aplicaban.</li>
+<li>Asumí que las 15 notas restantes entre 45 y 78 estaban sobre 100, conforme al escenario de escalas mixtas de la guía. Las dividí entre 20 para llevarlas a la escala 0–5. Reemplacé las 12 edades fuera de 15–60 por la mediana de edades válidas, 22 años. La edad imputada es una estimación.</li>
+<li>Asigné 0 horas a 2.707 estudiantes que reportaron no trabajar y tenían horas faltantes. Marqué 29 valores superiores a 100 como nulos y los imputé con 24 horas, la mediana de horas válidas entre quienes trabajan.</li>
+<li>Creé <code>desertor</code> a partir de <code>estado</code> y <code>cuartil_asistencia</code> con <code>pd.qcut()</code>. Los cuartiles agrupan valores de asistencia en tamaños parecidos y evitan comparar porcentajes individuales con pocos casos. Los empates en los cortes explican pequeñas diferencias en tamaño. Excluí de esta comparación a 197 estudiantes sin asistencia, que permanecen en las demás preguntas.</li>
+</ol>
+<p>El resultado tiene <strong>9.702 estudiantes</strong>, 25 columnas y <strong>3.140 desertores (32,36 %)</strong>. El detalle por operación está en <a href="Data/processed/decisiones.csv">decisiones.csv</a>. Los conteos de auditoría se calculan antes de limpiar y los de la bitácora sobre las filas presentes en cada paso.</p></div></section>
+<section id="diccionario"><h2>Diccionario de datos</h2><div class="panel"><p>El tipo indica cómo se interpreta la columna en el análisis. La auditoría muestra por separado el tipo con el que Pandas leyó el CSV.</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Rol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id_estudiante</td>
+<td>Texto</td>
+<td>Código que distingue a cada estudiante.</td>
+<td>Identificación</td>
+</tr>
+<tr>
+<td>programa</td>
+<td>Categórica</td>
+<td>Carrera en la que figura el estudiante.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>facultad</td>
+<td>Categórica</td>
+<td>Unidad académica a la que pertenece el programa.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>jornada</td>
+<td>Categórica</td>
+<td>Horario de estudio: diurno, nocturno o fin de semana.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>semestre</td>
+<td>Numérica discreta</td>
+<td>Nivel del plan de estudios que cursa el estudiante.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>promedio_acumulado</td>
+<td>Numérica continua</td>
+<td>Nota promedio acumulada en escala de 0 a 5 tras la limpieza.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>creditos_aprobados</td>
+<td>Numérica discreta</td>
+<td>Número de créditos que el estudiante ha aprobado.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>materias_reprobadas</td>
+<td>Numérica discreta</td>
+<td>Número de asignaturas que el estudiante ha perdido.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>asistencia_pct</td>
+<td>Numérica continua</td>
+<td>Porcentaje de asistencia a clases. Se leyó como texto.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>sesiones_tutoria</td>
+<td>Numérica discreta</td>
+<td>Cantidad de sesiones de tutoría registradas.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>cambios_programa</td>
+<td>Numérica discreta</td>
+<td>Cantidad de cambios de programa registrados.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>estrato</td>
+<td>Categórica ordinal</td>
+<td>Estrato socioeconómico registrado, del 1 al 6.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>beca</td>
+<td>Categórica binaria</td>
+<td>Indica si el estudiante cuenta con beca.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>trabaja</td>
+<td>Categórica binaria</td>
+<td>Indica si el estudiante trabaja.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>horas_trabajo_semana</td>
+<td>Numérica</td>
+<td>Horas de trabajo semanales. Se leyó como texto.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>distancia_km</td>
+<td>Numérica continua</td>
+<td>Distancia registrada entre la residencia y la institución, en kilómetros.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>edad</td>
+<td>Numérica</td>
+<td>Edad del estudiante en años.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>genero</td>
+<td>Categórica</td>
+<td>Género registrado en la base.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>ciudad_procedencia</td>
+<td>Categórica</td>
+<td>Ciudad de la que procede el estudiante.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>tipo_colegio</td>
+<td>Categórica</td>
+<td>Clasificación pública o privada del colegio de procedencia.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>fecha_matricula</td>
+<td>Fecha</td>
+<td>Fecha registrada de matrícula.</td>
+<td>Explicativa</td>
+</tr>
+<tr>
+<td>estado</td>
+<td>Categórica</td>
+<td>Situación registrada: activo, graduado o desertor.</td>
+<td>Resultado</td>
+</tr>
+<tr>
+<td>motivo_retiro</td>
+<td>Categórica</td>
+<td>Razón de retiro registrada después de la deserción, cuando aplica.</td>
+<td>Resultado (detalle posterior)</td>
+</tr>
+</tbody>
+</table></div></div></section>
+<section id="reflexiones"><h2>Reflexiones</h2><div class="panel"><p><strong>Asociación y causalidad.</strong> Que el 21,92 % de los becados deserte frente al 36,37 % de los no becados no permite atribuir la diferencia a la beca. Por ejemplo, el rendimiento previo puede aumentar tanto la probabilidad de recibirla como la de continuar. Para evaluar el efecto compararía estudiantes elegibles con condiciones iniciales similares y mediría su permanencia después de otorgar el beneficio. Una regla de asignación con un umbral claro permitiría estudiar a quienes quedaron justo por encima y justo por debajo.</p>
+<p><strong>Variables para predicción.</strong> <code>motivo_retiro</code> se registra después de la deserción, por lo que usarlo para una alerta temprana introduciría fuga de información. Su patrón de faltantes también revela el resultado: los 6.877 motivos vacíos de la base original corresponden a activos y graduados. <code>estado</code> final y el indicador <code>desertor</code> son el resultado. Promedio, créditos, tutorías o asistencia solo serían utilizables si se calculan con registros disponibles hasta el día en que se emite la alerta.</p>
+<p><strong>Variables sensibles.</strong> Género, estrato y procedencia pueden servir para detectar brechas de acceso al apoyo y revisar si un programa funciona de manera equitativa. Usarlas como criterios individuales de exclusión puede estigmatizar a los estudiantes o trasladar desigualdades históricas a la decisión. Por ejemplo, que una ciudad aparezca asociada al retiro puede reflejar barreras de transporte y no una característica individual. Para asignar apoyo priorizaría necesidades observables y usaría resultados agregados por grupo para revisar la cobertura y detectar sesgos.</p></div></section>
+  </main>
+  <footer class="container">
+    <a href="Data/processed/decisiones.csv" download>Descargar bitácora de decisiones (CSV)</a>
+    · <a href="README.md">Consultar instrucciones de ejecución</a>
+  </footer>
+</body>
+</html>

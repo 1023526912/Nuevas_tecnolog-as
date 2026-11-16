@@ -1,0 +1,52 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, sans-serif;
+  color: #142a36;
+  background: #eef3f4;
+  --ink: #142a36;
+  --muted: #415862;
+  --line: #d4e0e2;
+  --accent: #006859;
+}
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.65; }
+.container { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
+header { color: white; background: #102e38; padding: clamp(2.6rem, 7vw, 5rem) 0 2.6rem; }
+h1, h2, h3 { line-height: 1.2; letter-spacing: -.025em; }
+h1 { margin: 0 0 .65rem; font-size: clamp(2.4rem, 7vw, 4.6rem); }
+header p { color: #c9e2e3; max-width: 62ch; }
+nav { display: flex; flex-wrap: wrap; gap: .6rem 1.3rem; margin-top: 1.4rem; }
+nav a { color: #b7f2e4; font-weight: 600; }
+a { color: var(--accent); text-underline-offset: .2em; }
+a:focus-visible { outline: 3px solid #a9540c; outline-offset: 4px; }
+main { padding: 1.8rem 0 3rem; }
+.metrics, .charts { display: grid; gap: 1rem; }
+.metrics { grid-template-columns: repeat(auto-fit, minmax(min(100%, 185px), 1fr)); margin: 0; }
+.metric, figure, .panel { margin: 0; background: white; border: 1px solid var(--line); border-radius: 1rem; }
+.metric, .panel { padding: clamp(1rem, 3vw, 2rem); }
+dt { color: var(--muted); }
+dd { margin: .2rem 0 0; color: var(--accent); font-size: clamp(1.6rem, 4vw, 2.45rem); font-weight: 750; }
+section { margin-top: 2.7rem; scroll-margin-top: 1rem; }
+h2 { font-size: clamp(1.65rem, 4vw, 2.3rem); margin: 0 0 1rem; }
+h3 { margin: 1.6rem 0 .7rem; }
+.panel > h3:first-child { margin-top: 0; }
+.charts { grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr)); }
+figure { padding: 1rem; display: flex; flex-direction: column; }
+figure h3 { margin: 0 0 .75rem; }
+figure img { width: 100%; height: auto; display: block; }
+figcaption { margin-top: auto; padding-top: .85rem; color: var(--muted); }
+.table-scroll { overflow-x: auto; margin: 1rem 0 1.4rem; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th, td { border-bottom: 1px solid var(--line); padding: .65rem .75rem; text-align: left; vertical-align: top; }
+th { background: #e1efec; }
+td[style], th[style] { white-space: nowrap; font-variant-numeric: tabular-nums; }
+tbody tr:nth-child(even) { background: #f6f9fa; }
+code { overflow-wrap: anywhere; color: #234754; }
+footer { padding: 1rem 0 2rem; color: var(--muted); }
+@media print {
+  body, header { color: var(--ink); background: white; }
+  header p, nav a { color: var(--ink); }
+  nav { display: none; }
+  figure { break-inside: avoid; }
+  .table-scroll { overflow: visible; }
+}
